@@ -17,6 +17,7 @@ export default function Suggestions() {
                         <div className="razao">Segue você</div>
                     </div>
                 </div>
+                <div class="seguir">Seguir</div>
             </div>
         );
     }

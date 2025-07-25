@@ -6,6 +6,8 @@ export default function Stories() {
         { imagem: "assets/img/nathanwpylestrangeplanet.svg", usuario: "nathanwpylestrangeplanet" },
         { imagem: "assets/img/wawawicomics.svg", usuario: "wawawicomics" },
         { imagem: "assets/img/respondeai.svg", usuario: "respondeai" },
+        { imagem: "assets/img/filomoderna.svg", usuario: "filomoderna" },
+        { imagem: "assets/img/memeriagourmet.svg", usuario: "memeriagourmet" },
     ];
 
     function Story({imagem, usuario }) {

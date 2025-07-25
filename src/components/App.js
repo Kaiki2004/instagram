@@ -9,9 +9,7 @@ function App() {
       <div className="corpo">
         <div className="esquerda">
           <Stories />
-          <div className="posts">
             <Post />
-          </div>
         </div>
         <Sidebar />
 

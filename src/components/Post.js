@@ -2,12 +2,12 @@ import { useState } from "react";
 
 export default function Post() {
     const posts = [
-        { imagem: "assets/img/gato-telefone.svg", imgUsuario: "assets/img/meowed.svg", usuario: "meowed", curtidas: 101523 },
-        { imagem: "assets/img/dog.svg", imgUsuario: "assets/img/catanacomics.svg", usuario: "respondeai", curtidas: 101500 },
-        { imagem: "assets/img/chibirdart.svg", imgUsuario: "assets/img/chibirdart.svg", usuario: "barked", curtidas: 101400 },
+        { imagem: "assets/img/gato-telefone.svg", imgUsuario: "assets/img/meowed.svg", usuario: "meowed", curtidas: 101523, curtidoPor:'respondeai',imgCurtidoPor: "assets/img/respondeai.svg" },
+        { imagem: "assets/img/dog.svg", imgUsuario: "assets/img/adorable_animals.svg", usuario: "respondeai", curtidas: 101500, curtidoPor:'meowed',imgCurtidoPor: "assets/img/meowed.svg" },
+        { imagem: "assets/img/chibirdart.svg", imgUsuario: "assets/img/barked.svg", usuario: "barked", curtidas: 101400, curtidoPor:'meowed',imgCurtidoPor: "assets/img/meowed.svg" },
     ];
 
-    function PostItem({ imagem, imgUsuario, usuario, curtidasIniciais }) {
+    function PostItem({ imagem, imgUsuario, usuario, curtidasIniciais,curtidoPor,imgCurtidoPor }) {
         const [savePost, setSavePost] = useState('bookmark-outline');
         const [like, setLike] = useState('heart-outline');
         const [curtidas, setCurtidas] = useState(curtidasIniciais);
@@ -34,7 +34,7 @@ export default function Post() {
         }
 
         return (
-            <div className="post-item">
+            <div className="post">
                 <div className="topo">
                     <div className="usuario">
                         <img src={imgUsuario} alt={usuario} />
@@ -52,7 +52,7 @@ export default function Post() {
                 <div className="fundo">
                     <div className="acoes">
                         <div>
-                            <ion-icon onClick={curtir} name={like}></ion-icon>
+                            <ion-icon className={like === 'heart' ? 'coracao' : ''} onClick={curtir} name={like}></ion-icon>
                             <ion-icon name="chatbubble-outline"></ion-icon>
                             <ion-icon name="paper-plane-outline"></ion-icon>
                         </div>
@@ -62,9 +62,9 @@ export default function Post() {
                     </div>
 
                     <div className="curtidas">
-                        <img src="assets/img/respondeai.svg" alt="respondeai" />
+                        <img src={imgCurtidoPor} alt="respondeai" />
                         <div className="texto">
-                            Curtido por <strong>respondeai</strong> e <strong>outras {curtidas} pessoas</strong>
+                            Curtido por <strong>{curtidoPor}</strong> e <strong>outras {curtidas} pessoas</strong>
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@ export default function Post() {
     }
 
     return (
-        <div className="post">
+        <div className="posts">
             {posts.map((item, index) => (
                 <PostItem
                     key={index}
@@ -81,6 +81,8 @@ export default function Post() {
                     imgUsuario={item.imgUsuario}
                     usuario={item.usuario}
                     curtidasIniciais={item.curtidas}
+                    curtidoPor={item.curtidoPor}
+                    imgCurtidoPor={item.imgCurtidoPor}
                 />
             ))}
         </div>
